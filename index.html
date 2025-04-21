@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #00ff99;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .pixel-heart {
+      font-size: 50px;
+      color: red;
+      animation: pulse 1s infinite;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 12px;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #00ff99;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <h1>🎂 Happy Birthday! 🎉</h1>
+  <div class="pixel-heart">❤</div>
+
+  <!-- Using your Google Drive file as a direct link -->
+  <audio id="birthday-audio">
+    <source src="https://docs.google.com/uc?export=download&id=1zv8mRk2XoZ_JSZ8lz2C7kueybDLUkvM4" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button onclick="document.getElementById('birthday-audio').play()">▶ Play Song</button>
+
+</body>
+</html>
