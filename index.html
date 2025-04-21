@@ -51,13 +51,12 @@
   <h1>🎂 Happy Birthday! 🎉</h1>
   <div class="pixel-heart">❤</div>
 
-  <!-- Using your Google Drive file as a direct link -->
   <audio id="birthday-audio">
-    <source src="https://docs.google.com/uc?export=download&id=1zv8mRk2XoZ_JSZ8lz2C7kueybDLUkvM4" type="audio/mpeg">
+    <source src="8bit%20Happy%20Birthday.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <button onclick="document.getElementById('birthday-audio').play()">▶ Play Song</button>
+  <button onclick="document.getElementById('birthday-audio').load(); document.getElementById('birthday-audio').play()">▶ Play Song</button>
 
 </body>
 </html>
