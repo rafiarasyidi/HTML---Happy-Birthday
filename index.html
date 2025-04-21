@@ -1,62 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎂 Happy Birthday, Sayang! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #111;
-      color: #00ff99;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffccff, #ccffff);
       font-family: 'Press Start 2P', cursive;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
+      flex-direction: column;
+      color: #333;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 20px;
       margin-bottom: 20px;
     }
 
-    .pixel-heart {
-      font-size: 50px;
-      color: red;
-      animation: pulse 1s infinite;
+    h2 {
+      font-size: 14px;
+      margin-bottom: 40px;
+      padding: 0 10px;
     }
 
-    button {
-      margin-top: 30px;
-      padding: 10px 20px;
-      font-size: 12px;
-      font-family: 'Press Start 2P', cursive;
-      background-color: #00ff99;
-      border: none;
-      cursor: pointer;
-      border-radius: 8px;
+    .emoji {
+      font-size: 24px;
+      margin-top: 10px;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    audio {
+      margin-top: 20px;
+      z-index: 1;
+    }
+
+    .steve {
+      position: absolute;
+      bottom: 20px;
+      width: 130px; /* You can increase/decrease size */
+      height: auto;
+      animation: walk 8s linear infinite alternate;
+      z-index: 1;
+    }
+
+    @keyframes walk {
+      0%   { left: -60px; transform: scaleX(1); }
+      50%  { transform: scaleX(1); }
+      51%  { transform: scaleX(-1); }
+      100% { left: calc(100% + 60px); transform: scaleX(-1); }
+    }
+
+    .firework {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: red;
+      opacity: 0;
+      z-index: 2;
+      animation: explode 1.5s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(0.3);
+        opacity: 0;
+      }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 100px;
+      height: auto;
+      z-index: 0;
+      animation: float 10s linear infinite;
+      opacity: 0.9;
+    }
+
+    .balloon.left {
+      left: 30px;
+      bottom: -100px;
+      animation-delay: 0s;
+    }
+
+    .balloon.right {
+      right: 30px;
+      bottom: -100px;
+      animation-delay: 5s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh);
+        opacity: 0;
+      }
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+  <h1>💖🎂 H A P P Y &nbsp; B I R T H D A Y, &nbsp; S A Y A N G 🎂💖</h1>
+  <h2>You’re the pixel to my world 🕹️ — I am grateful to get to know and have you 💘</h2>
+  <div class="emoji">🌸🎈💫💝✨🍰💋</div>
 
-  <h1>🎂 Happy Birthday! 🎉</h1>
-  <div class="pixel-heart">❤</div>
-
-  <audio id="birthday-audio">
-    <source src="8bit%20Happy%20Birthday.mp3" type="audio/mpeg">
+  <audio controls autoplay loop>
+    <source src="8bit Happy Birthday.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <button onclick="document.getElementById('birthday-audio').load(); document.getElementById('birthday-audio').play()">▶ Play Song</button>
+  <img src="steve.gif" alt="Steve Walking" class="steve">
+  <img src="balloon.gif" alt="Balloon Left" class="balloon left">
+  <img src="balloon.gif" alt="Balloon Right" class="balloon right">
 
+  <script>
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.classList.add('firework');
+      const colors = ['#ff0040', '#00ffd5', '#ffff00', '#00ff00', '#ff9900', '#ffffff'];
+      firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+      firework.style.left = `${50 + (Math.random() * 30 - 15)}%`;
+      firework.style.top = `${40 + (Math.random() * 20 - 10)}%`;
+      firework.style.setProperty('--x', `${(Math.random() - 0.5) * 200}px`);
+      firework.style.setProperty('--y', `${(Math.random() - 0.5) * 200}px`);
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 1500);
+    }
+
+    setInterval(createFirework, 250);
+  </script>
 </body>
 </html>
